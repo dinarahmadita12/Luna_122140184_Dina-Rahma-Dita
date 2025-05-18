@@ -1,54 +1,136 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Luna Wellness Flow
 
-Currently, two official plugins are available:
+## Deskripsi Aplikasi
+Luna Wellness Flow adalah aplikasi pelacak kesehatan reproduksi yang dirancang untuk membantu pengguna memantau siklus menstruasi, suasana hati, gejala, dan pengingat obat mereka. Aplikasi ini menyediakan antarmuka yang intuitif dan menyenangkan untuk melacak dan mengelola kesehatan secara holistik.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Teknologi yang Digunakan
 
-## Expanding the ESLint configuration
+### Frontend
+- React.js (dengan TypeScript)
+- Tailwind CSS untuk styling
+- React Router untuk navigasi
+- React Context API untuk manajemen state
+- shadcn/ui untuk komponen UI
+- react-hook-form untuk pengelolaan form
+- date-fns untuk manipulasi tanggal
+- recharts untuk visualisasi data
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Backend
+- Python Pyramid (framework)
+- PostgreSQL (database)
+- SQLAlchemy (ORM)
+- Alembic (migrasi database)
+- RESTful API
+- Sistem autentikasi JWT
+- Cookiecutter untuk pembuatan proyek
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Fitur Utama
+- **Kalender Siklus**: Visualisasi dan pelacakan siklus menstruasi dengan prediksi periode mendatang
+- **Pelacak Suasana Hati**: Catat suasana hati setiap hari dan lihat pola dari waktu ke waktu
+- **Pelacak Gejala**: Dokumentasikan gejala fisik untuk mengidentifikasi pola dan pemicu
+- **Pengingat Obat**: Atur dan kelola pengingat untuk obat-obatan dan suplemen
+- **Tips Kesehatan Harian**: Dapatkan tips untuk membantu mengelola kesehatan Anda
+- **Autentikasi Pengguna**: Keamanan dengan sistem login/registrasi
+
+## Instalasi Frontend
+
+```bash
+# Clone repository
+git clone <repository-url>
+
+# Pindah ke direktori frontend
+cd luna-wellness-flow
+
+# Instal dependensi
+npm install
+
+# Jalankan aplikasi dalam mode pengembangan
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Aplikasi akan berjalan di [http://localhost:5173](http://localhost:5173) (atau port yang tersedia).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Instalasi Backend
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### Membuat Proyek Baru dengan Cookiecutter (opsional)
+
+```bash
+# Instal cookiecutter
+pip install cookiecutter
+
+# Buat proyek baru
+cookiecutter https://github.com/example/luna-wellness-template.git
 ```
+
+### Setup Manual
+
+```bash
+# Pindah ke direktori backend
+cd backend
+
+# Buat dan aktifkan virtual environment
+python -m venv venv
+source venv/bin/activate  # Untuk Windows: venv\Scripts\activate
+
+# Instal dependensi
+pip install -e .
+
+# Konfigurasi lingkungan
+# Buat file .env dengan contoh:
+echo "DB_URL=postgresql://username:password@localhost:5432/luna_db" > .env
+echo "JWT_SECRET=your_secret_key_here" >> .env
+echo "CORS_ORIGIN=http://localhost:5173" >> .env
+
+# Buat migrasi database awal
+create_luna_migration development.ini "initial_schema"
+
+# Setup database dengan Alembic
+initialize_luna_db development.ini --alembic
+
+# Jalankan server development
+pserve development.ini
+```
+
+Server backend akan berjalan di [http://localhost:6543](http://localhost:6543).
+
+## Cara Penggunaan / Integrasi Backend dan Frontend
+
+1. **Konfigurasi Endpoint API**:
+   - Buat file `.env` di direktori frontend dengan format:
+     ```
+     VITE_API_URL=http://localhost:6543
+     ```
+
+2. **Otentikasi**:
+   - Gunakan endpoint `/api/auth/register` untuk mendaftar.
+   - Gunakan endpoint `/api/auth/login` untuk login dan dapatkan token.
+   - Token harus disertakan dalam header `Authorization: Bearer <token>` untuk permintaan API yang memerlukan otentikasi.
+
+3. **Endpoints Utama**:
+   - Siklus: `/api/cycles`
+   - Suasana Hati: `/api/moods`
+   - Gejala: `/api/symptoms`
+   - Pengingat Obat: `/api/medications`
+   - Tips Kesehatan: `/api/tips`
+
+4. **Manajemen Database**:
+   - Buat migrasi baru setelah mengubah model:
+     ```bash
+     create_luna_migration development.ini "deskripsi_perubahan"
+     ```
+   - Terapkan migrasi:
+     ```bash
+     alembic -c alembic.ini upgrade head
+     ```
+
+5. **Pengujian Integrasi**:
+   - Pastikan kedua server (frontend dan backend) berjalan.
+   - Gunakan Postman atau Insomnia untuk menguji endpoints API.
+   - Verifikasi integrasi frontend-backend menggunakan panel Network di Developer Tools browser.
+
+## Catatan Tambahan
+
+- Pengaturan CORS telah dikonfigurasi pada backend untuk menerima permintaan dari frontend di development.
+- Untuk lingkungan produksi, konfigurasi deployment dan server produksi diperlukan.
+- Dokumentasi API lengkap tersedia di `/api/docs` setelah menjalankan backend.
