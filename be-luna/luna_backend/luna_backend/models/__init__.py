@@ -5,6 +5,7 @@ import zope.sqlalchemy
 
 # import or define all models here to ensure they are attached to the
 # Base.metadata prior to any initialization routines
+from .user import User
 from .cycle import Cycle
 from .mymodel import MyModel  # flake8: noqa
 
