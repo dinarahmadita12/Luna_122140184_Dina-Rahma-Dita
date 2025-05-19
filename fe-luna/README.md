@@ -1,8 +1,8 @@
 
-# Luna Wellness Flow
+# Luna Menstrual Cycle Tracker
 
 ## Deskripsi Aplikasi
-Luna Wellness Flow adalah aplikasi pelacak kesehatan reproduksi yang dirancang untuk membantu pengguna memantau siklus menstruasi, suasana hati, gejala, dan pengingat obat mereka. Aplikasi ini menyediakan antarmuka yang intuitif dan menyenangkan untuk melacak dan mengelola kesehatan secara holistik.
+Luna Menstrual Cycle Tracker adalah aplikasi pelacak kesehatan reproduksi yang dirancang untuk membantu pengguna memantau siklus menstruasi, suasana hati, gejala, dan pengingat obat mereka. Aplikasi ini menyediakan antarmuka yang intuitif dan menyenangkan untuk melacak dan mengelola kesehatan secara holistik.
 
 ## Teknologi yang Digunakan
 
@@ -36,11 +36,9 @@ Luna Wellness Flow adalah aplikasi pelacak kesehatan reproduksi yang dirancang u
 ## Instalasi Frontend
 
 ```bash
-# Clone repository
-git clone <repository-url>
 
 # Pindah ke direktori frontend
-cd luna-wellness-flow
+cd fe-luna
 
 # Instal dependensi
 npm install
@@ -53,7 +51,7 @@ Aplikasi akan berjalan di [http://localhost:5173](http://localhost:5173) (atau p
 
 ## Instalasi Backend
 
-### Membuat Proyek Baru dengan Cookiecutter (opsional)
+### Membuat Proyek Baru dengan Cookiecutter
 
 ```bash
 # Instal cookiecutter
@@ -67,7 +65,7 @@ cookiecutter https://github.com/example/luna-wellness-template.git
 
 ```bash
 # Pindah ke direktori backend
-cd backend
+cd be-luna
 
 # Buat dan aktifkan virtual environment
 python -m venv venv
@@ -78,7 +76,7 @@ pip install -e .
 
 # Konfigurasi lingkungan
 # Buat file .env dengan contoh:
-echo "DB_URL=postgresql://username:password@localhost:5432/luna_db" > .env
+echo "DB_URL=postgresql://username:password@localhost:5432/luna_backend" > .env
 echo "JWT_SECRET=your_secret_key_here" >> .env
 echo "CORS_ORIGIN=http://localhost:5173" >> .env
 
