@@ -1,0 +1,17 @@
+
+pyramid==2.0.2
+pyramid_tm==2.5
+pyramid_debugtoolbar==4.9
+SQLAlchemy==2.0.28
+alembic==1.13.1
+psycopg2
+waitress==2.1.2
+pyramid_jwt==1.6.1
+bcrypt==4.1.2
+marshmallow==3.20.2
+cornice==6.1.0
+zope.sqlalchemy==3.1
+python-dotenv==1.0.1
+cookiecutter==2.4.0
+pytest==8.0.2
+WebTest==3.0.0
