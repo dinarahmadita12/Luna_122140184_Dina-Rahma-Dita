@@ -12,5 +12,5 @@ class UserSchema(Schema):
 
 
 class LoginSchema(Schema):
-    email = fields.Str(required=True)
-    password = fields.Str(required=True, load_only=True)
+    email = fields.Email(required=True)
+    password = fields.Str(required=True, load_only=True, validate=validate.Length(min=6))

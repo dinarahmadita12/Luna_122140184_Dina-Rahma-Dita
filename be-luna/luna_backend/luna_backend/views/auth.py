@@ -56,6 +56,10 @@ def register_user(request):
         log.error(f"Error in register_user: {str(e)}")
         return Response(json={'status': 'error', 'message': 'Server error'}, status=500)
 
+import jwt
+import datetime
+
+SECRET_KEY = '@#_122140184_dina_#@'
 
 @view_config(route_name='auth_login', request_method='POST', renderer='json')
 def login_user(request):
@@ -65,26 +69,24 @@ def login_user(request):
         validated_data = schema.load(login_data)
         
         db = request.dbsession
-        user = db.query(User).filter(User.username == validated_data['username']).first()
+        user = db.query(User).filter(User.email == validated_data['email']).first()
         
         if not user or not user.check_password(validated_data['password']):
             return HTTPForbidden(json_body={
                 'status': 'error',
-                'message': 'Invalid username or password'
+                'message': 'Invalid email or password'
             })
-            
-        # Create JWT token
+        
+        # Create JWT token manually using PyJWT
         payload = {
             'sub': user.id,
             'name': user.username,
-            'email': user.email
+            'email': user.email,
+            'iat': datetime.datetime.utcnow(),
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # token valid 1 hour
         }
         
-        token = request.create_jwt_token(
-            user.id,
-            name=user.username,
-            email=user.email
-        )
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
         
         return {
             'status': 'success',
