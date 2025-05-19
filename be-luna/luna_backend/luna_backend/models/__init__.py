@@ -5,8 +5,11 @@ import zope.sqlalchemy
 
 # import or define all models here to ensure they are attached to the
 # Base.metadata prior to any initialization routines
-from .user import User
-from .cycle import Cycle
+from .user import User  # noqa
+from .cycle import Cycle  # noqa
+from .mood import Mood  # noqa
+from .symptom import Symptom  # noqa
+from .medication import Medication  # noqa
 from .mymodel import MyModel  # flake8: noqa
 
 # run configure_mappers after defining all of the models to ensure
