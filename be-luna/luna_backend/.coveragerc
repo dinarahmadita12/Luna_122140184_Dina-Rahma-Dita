@@ -1,0 +1,3 @@
+[run]
+source = luna_backend
+omit = luna_backend/test*
