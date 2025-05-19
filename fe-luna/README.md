@@ -92,14 +92,14 @@ initialize_luna_db development.ini --alembic
 pserve development.ini
 ```
 
-Server backend akan berjalan di [http://localhost:6543](http://localhost:6543).
+Server backend akan berjalan di [http://localhost:5432](http://localhost:5432).
 
 ## Cara Penggunaan / Integrasi Backend dan Frontend
 
 1. **Konfigurasi Endpoint API**:
    - Buat file `.env` di direktori frontend dengan format:
      ```
-     VITE_API_URL=http://localhost:6543
+     VITE_API_URL=http://localhost:5432
      ```
 
 2. **Otentikasi**:
