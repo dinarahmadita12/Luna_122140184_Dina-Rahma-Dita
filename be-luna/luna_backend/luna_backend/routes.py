@@ -5,7 +5,9 @@ def includeme(config):
     # Auth routes
     config.add_route('auth_register', '/api/auth/register')
     config.add_route('auth_login', '/api/auth/login')
-    
+    config.add_route('get_users', '/api/auth/users')  # Mendefinisikan route untuk mendapatkan daftar pengguna
+    config.add_route('delete_user', 'api/auth/users/{id}')  # Mendefinisikan route untuk menghapus pengguna
+
     # Cycles routes
     config.add_route('cycles_collection', '/api/cycles')
     config.add_route('cycle_item', '/api/cycles/{id}')

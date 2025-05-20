@@ -59,7 +59,7 @@ def register_user(request):
 import jwt
 import datetime
 
-SECRET_KEY = '@#_122140184_dina_#@'
+SECRET_KEY = "@#_122140184_dina_#@"
 
 @view_config(route_name='auth_login', request_method='POST', renderer='json')
 def login_user(request):
@@ -106,4 +106,52 @@ def login_user(request):
         })
     except Exception as e:
         log.error(f"Error in login_user: {str(e)}")
+        return Response(json={'status': 'error', 'message': 'Server error'}, status=500)
+    
+
+@view_config(route_name='get_users', request_method='GET', renderer='json')
+def get_users(request):
+    try:
+        db = request.dbsession
+        users = db.query(User).all()  # Ambil semua pengguna dari database
+        
+        # Gunakan UserSchema untuk serialisasi data pengguna
+        schema = UserSchema(many=True)
+        result = schema.dump(users)
+        
+        return {
+            'status': 'success',
+            'data': result
+        }
+    
+    except Exception as e:
+        log.error(f"Error in get_users: {str(e)}")
+        return Response(json={'status': 'error', 'message': 'Server error'}, status=500)
+
+@view_config(route_name='delete_user', request_method='DELETE', renderer='json', permission='admin')
+def delete_user(request):
+    try:
+        user_id = int(request.matchdict['id'])  # Ambil ID dari URL
+        db = request.dbsession
+        
+        # Cek apakah pengguna ada
+        user = db.query(User).filter(User.id == user_id).first()
+        
+        if not user:
+            return HTTPNotFound(json_body={
+                'status': 'error',
+                'message': 'User not found'
+            })
+        
+        # Hapus pengguna
+        db.delete(user)
+        db.flush()  # Pastikan perubahan disimpan ke database
+        
+        return {
+            'status': 'success',
+            'message': 'User deleted successfully'
+        }
+    
+    except Exception as e:
+        log.error(f"Error in delete_user: {str(e)}")
         return Response(json={'status': 'error', 'message': 'Server error'}, status=500)
