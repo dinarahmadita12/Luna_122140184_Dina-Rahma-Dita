@@ -14,7 +14,6 @@ Luna Menstrual Cycle Tracker adalah aplikasi pelacak kesehatan reproduksi yang d
 - shadcn/ui untuk komponen UI
 - react-hook-form untuk pengelolaan form
 - date-fns untuk manipulasi tanggal
-- recharts untuk visualisasi data
 
 ### Backend
 - Python Pyramid (framework)
@@ -32,6 +31,16 @@ Luna Menstrual Cycle Tracker adalah aplikasi pelacak kesehatan reproduksi yang d
 - **Pengingat Obat**: Atur dan kelola pengingat untuk obat-obatan dan suplemen
 - **Tips Kesehatan Harian**: Dapatkan tips untuk membantu mengelola kesehatan Anda
 - **Autentikasi Pengguna**: Keamanan dengan sistem login/registrasi
+- **UI Responsif dan User-Friendly**
+
+
+### Dependensi Paket (Library)
+- Python >= 3.10
+- Pyramid (framework backend)
+- SQLAlchemy
+- psycopg2 (koneksi ke PostgreSQL)
+- PostgreSQL (basis data)
+- Tailwind CSS 
 
 ## Instalasi Frontend
 
@@ -127,8 +136,8 @@ Server backend akan berjalan di [http://localhost:5432](http://localhost:5432).
    - Gunakan Postman atau Insomnia untuk menguji endpoints API.
    - Verifikasi integrasi frontend-backend menggunakan panel Network di Developer Tools browser.
 
-## Catatan Tambahan
-
-- Pengaturan CORS telah dikonfigurasi pada backend untuk menerima permintaan dari frontend di development.
-- Untuk lingkungan produksi, konfigurasi deployment dan server produksi diperlukan.
-- Dokumentasi API lengkap tersedia di `/api/docs` setelah menjalankan backend.
+## Referensi 
+- National Institutes of Health - Menstrual Health
+- Pyramid Web Framework
+- PostgreSQL Official Site
+- Aplikasi referensi seperti Flo

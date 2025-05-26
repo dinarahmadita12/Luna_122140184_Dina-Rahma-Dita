@@ -19,6 +19,9 @@ def get_moods(request):
         user_id = request.authenticated_userid
         db = request.dbsession
         
+        # Log user_id yang sedang dicari mood-nya
+        log.info(f"Fetching moods for user_id: {user_id}")
+
         moods = db.query(Mood).filter(Mood.user_id == user_id).all()
         
         schema = MoodSchema(many=True)
@@ -38,46 +41,48 @@ def get_moods(request):
 def create_mood(request):
     try:
         # Mengambil user_id dari session yang sudah terautentikasi
-        user_id = request.authenticated_userid
+        user_id = request.authenticated_userid  # Pastikan user_id valid
+
+        # Data yang diterima dari client, tanpa 'user_id' dan 'id'
         mood_data = request.json_body
         log.info(f"Received data: {mood_data}")  # Log request body
-        
+
         # Validasi data menggunakan MoodSchema
         schema = MoodSchema()
         validated_data = schema.load(mood_data)  # Validasi input
-        
+
         log.info(f"Validated data: {validated_data}")  # Log validasi data
-        
+
         # Pastikan tidak ada 'user_id' di validated_data karena sudah diambil dari session
         if 'user_id' in validated_data:
             del validated_data['user_id']  # Hapus user_id dari data yang divalidasi
-        
-        # Pastikan data user_id yang valid dari session digunakan
+
+        # Membuat mood baru dan menyimpannya ke database
         db = request.dbsession
         new_mood = Mood(
-            user_id=user_id,  # Gunakan user_id yang valid dari session
+            user_id=user_id,  # Menggunakan user_id yang valid dari session
             **validated_data  # Isi data lainnya dari validated_data
         )
-        
+
         db.add(new_mood)
         db.flush()  # Simpan ke database
-        
+
         result = schema.dump(new_mood)  # Serialize objek mood baru
         return {
             'status': 'success',
             'data': result
         }
-    
+
     except ValidationError as e:
         # Menangani error validasi jika data tidak sesuai
+        log.error(f"Validation error: {e.messages}")
         return HTTPBadRequest(json_body={
             'status': 'error',
             'message': 'Validation error',
             'errors': e.messages
         })
     except Exception as e:
-        log.error(f"Error in create_mood: {str(e)}")
-        # Menangani error server jika terjadi kesalahan lain
+        log.error(f"Error in create_mood: {str(e)}")  # Log error detail
         return Response(json={'status': 'error', 'message': 'Server error'}, status=500)
 
 @view_config(route_name='mood_item', request_method='GET', 
