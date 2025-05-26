@@ -57,7 +57,7 @@ export function LoginForm({ onToggleForm }: { onToggleForm: () => void }) {
         <div className="flex items-center justify-center">
           <Heart className="h-8 w-8 text-luna-rose mr-2" />
           <span className="text-xl font-semibold bg-gradient-to-r from-luna-purple to-luna-blue bg-clip-text text-transparent">
-            Luna Flow
+            Luna
           </span>
         </div>
         <CardTitle className="mt-4">Welcome back</CardTitle>

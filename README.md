@@ -56,7 +56,7 @@ npm install
 npm run dev
 ```
 
-Aplikasi akan berjalan di [http://localhost:5173](http://localhost:5173) (atau port yang tersedia).
+Aplikasi akan berjalan di [http://localhost:8080](http://localhost:8080) (atau port yang tersedia).
 
 ## Instalasi Backend
 
@@ -66,9 +66,6 @@ Aplikasi akan berjalan di [http://localhost:5173](http://localhost:5173) (atau p
 # Instal cookiecutter
 pip install cookiecutter
 
-# Buat proyek baru
-cookiecutter https://github.com/example/luna-wellness-template.git
-```
 
 ### Setup Manual
 
@@ -99,7 +96,7 @@ initialize_luna_db development.ini --alembic
 pserve development.ini
 ```
 
-Server backend akan berjalan di [http://localhost:5432](http://localhost:5432).
+Server backend akan berjalan di [http://localhost:8000](http://localhost:8000).
 
 ## Cara Penggunaan / Integrasi Backend dan Frontend
 
