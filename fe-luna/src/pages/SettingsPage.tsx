@@ -101,22 +101,6 @@ export default function SettingsPage() {
                   onCheckedChange={setNotifications}
                 />
               </div>
-              
-              <Separator />
-              
-              <div className="flex items-center justify-between">
-                <Label htmlFor="email-notifications" className="flex flex-col">
-                  <span>Email Notifications</span>
-                  <span className="font-normal text-sm text-muted-foreground">
-                    Receive email reminders
-                  </span>
-                </Label>
-                <Switch 
-                  id="email-notifications" 
-                  checked={emailNotifications}
-                  onCheckedChange={setEmailNotifications}
-                />
-              </div>
             </CardContent>
           </Card>
           
@@ -125,7 +109,6 @@ export default function SettingsPage() {
               <CardTitle>Data & Privacy</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Button variant="outline" className="w-full">Export Your Data</Button>
               <Button variant="outline" className="w-full text-destructive hover:text-destructive">
                 Delete Account
               </Button>

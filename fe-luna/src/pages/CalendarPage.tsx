@@ -109,7 +109,7 @@ export default function CalendarPage() {
                   
                   <div>
                     <h4 className="text-sm text-muted-foreground">Average period length</h4>
-                    <p>5 days</p>
+                    <p>6 days</p>
                   </div>
                 </div>
               ) : (

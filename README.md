@@ -75,7 +75,8 @@ cd be-luna
 
 # Buat dan aktifkan virtual environment
 python -m venv venv
-source venv/bin/activate  # Untuk Windows: venv\Scripts\activate
+venv\Scripts\activate
+# Untuk Mac : source venv/bin/activate  
 
 # Instal dependensi
 pip install -e .
@@ -93,7 +94,7 @@ create_luna_migration development.ini "initial_schema"
 initialize_luna_db development.ini --alembic
 
 # Jalankan server development
-pserve development.ini
+pserve development.ini --reload
 ```
 
 Server backend akan berjalan di [http://localhost:8000](http://localhost:8000).

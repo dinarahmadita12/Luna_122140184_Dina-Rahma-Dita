@@ -56,7 +56,7 @@ export function Layout({ children }: LayoutProps) {
             {children}
           </main>
           <footer className="border-t p-4 text-center text-sm text-muted-foreground">
-            <p>Luna Wellness Flow &copy; {new Date().getFullYear()}</p>
+            <p>Luna - Menstrual Cycle Tracking App &copy; {new Date().getFullYear()}</p>
           </footer>
         </div>
       </div>
