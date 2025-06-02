@@ -1,27 +1,28 @@
 Link Youtube : https://youtu.be/dPTt5C26xCc?si=NQqSGSLnSYoq7v1h
 
 # Luna Menstrual Cycle Tracker
-1. Halaman Register dan Login
+1. **Halaman Register dan Login**
+
 ![Screenshot 2025-05-29 131039](https://github.com/user-attachments/assets/e5b7e68c-39ec-4371-a6bc-ff96cd1fa953)
 
 ![Screenshot 2025-05-29 131022](https://github.com/user-attachments/assets/ce8090db-3b81-4602-85cb-e3a976e65ed4)
 
-2. Halaman Dashboard Luna
+2. **Halaman Dashboard Luna**
 ![alt text](<Screenshot 2025-05-29 131125.png>)
 
-3. Halaman Kalender
+3. **Halaman Kalender**
 ![Screenshot 2025-05-29 131209](https://github.com/user-attachments/assets/1c6189b0-6e03-4b99-976a-d07b8c12e75a)
 
-4. Halaman Pelacak Mood
+4. **Halaman Pelacak Mood**
 ![Screenshot 2025-05-29 131234](https://github.com/user-attachments/assets/49afb749-aa5e-45b0-91a2-82f018ed61bd)
 
-5. Halaman Pelacak Gejala
+5. **Halaman Pelacak Gejala**
 ![Screenshot 2025-05-29 131320](https://github.com/user-attachments/assets/03fa0d4f-efcb-4ba6-80e6-6d9b3242005b)
 
-6. Halaman Pengingat Obat
+6. **Halaman Pengingat Obat**
 ![Screenshot 2025-05-29 131404](https://github.com/user-attachments/assets/b7f185ae-55d7-40d4-a151-eadfc4af749e)
 
-7. Halaman Pengaturan
+7. **Halaman Pengaturan**
 ![Screenshot 2025-05-29 131430](https://github.com/user-attachments/assets/1f373abc-c975-4149-975c-a7c89e37c9c4)
 
 ## Deskripsi Aplikasi
